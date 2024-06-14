@@ -1,0 +1,37 @@
+/* 
+#32a0c3
+#5048e4
+#224ead
+#4681f4
+#21252b
+#282c34
+#121212
+*/
+
+body {
+    background-color: #21252b;
+}
+
+.card-custom {
+    background-color: #282c34;
+    border: none;
+}
+
+.form-control::placeholder {
+    color: #bbbbbb;
+    border: none;
+}
+
+.form-control {
+    color: #bbbbbb;
+    border: none;
+    width: 100%;
+    resize: none;
+    min-height: 30px;
+    overflow: hidden;
+    background-color: #21252b;
+}
+
+.form-select::placeholder {
+    color: #bbbbbb;
+}
