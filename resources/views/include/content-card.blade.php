@@ -6,7 +6,7 @@
                 <img style="width:50px" class="me-2 avatar-sm rounded-circle" src="{{ asset('img/logo.png') }}" alt="Avatar">
                 <div class="card-title mb-0">
                     <h5>
-                        <a class="text-decoration-none text-light" href="#">Alfin</a>
+                        <a class="text-decoration-none text-dark" href="#">Alfin</a>
                     </h5>
                 </div>
             </div>
@@ -19,8 +19,8 @@
             </div>
         </div>
     </div>
-    <div class="card-body text-light">
-        <p class="fs-6 fw-light">
+    <div class="card-body text-dark">
+        <p class="fs-6 fw-normal">
             {{ $feed->contents }}
         </p>
         <div class="pb-2">

@@ -36,7 +36,7 @@
 
             <div class="card card-custom"> {{-- ? SEARCH BAR --}}
                 <div class="card-header pb-0 border-0">
-                    <h5 class="text-light">Search something?</h5>
+                    <h5 class="text-dark">Search something?</h5>
                     <hr class="border-primary opacity-100 border-2 mb-0">
                 </div>
                 <div class="card-body">
@@ -45,20 +45,21 @@
                 </div>
             </div> {{-- ? SEARCH BAR END --}}
 
-            <div class="card card-custom text-light mt-3"> {{-- ? Categories --}}
+            <div class="card card-custom text-dark mt-3"> {{-- ? Categories --}}
                 <div class="card-header pb-0 border-0">
-                    <h5>Categories</h5>
+                    <p class="fs-5 fw-semibold">Categories</p>
+                    {{-- <h5>Categories</h5> --}}
                     <hr class="border-primary opacity-100 border-2 mb-0">
                 </div>
                 <div class="card-body">
                     @foreach ($categories as $cat)
-                        <a class="text-light text-decoration-none" href="{{ route('category', $cat->category_name) }}">
+                        <a class="text-dark text-decoration-none" href="{{ route('category', $cat->category_name) }}">
                             <h6>
                                 {{ $cat->category_name }}
                             </h6>
                         </a>
                     @endforeach
-                    <a href="/" class="text-light text-decoration-none">
+                    <a href="/" class="text-dark text-decoration-none">
                         <h6>Show All</h6>
                     </a>
                 </div>

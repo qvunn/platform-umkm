@@ -9,16 +9,11 @@
 */
 
 body {
-    background-color: #21252b;
+    background-color: #f6f6f6;
 }
 
 .card-custom {
-    background-color: #282c34;
-    border: none;
-}
-
-.form-control::placeholder {
-    color: #bbbbbb;
+    background-color: #ffffff;
     border: none;
 }
 
@@ -30,6 +25,11 @@ body {
     min-height: 30px;
     overflow: hidden;
     background-color: #21252b;
+}
+
+.form-control::placeholder {
+    color: #bbbbbb;
+    border: none;
 }
 
 .form-select::placeholder {

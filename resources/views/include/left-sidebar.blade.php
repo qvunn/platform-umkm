@@ -8,25 +8,25 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="/">
+                <a class="nav-link text-dark" href="/">
                     <i class="bi bi-book"></i>
                     <span>Feeds</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="/post">
+                <a class="nav-link text-dark" href="/post">
                     <i class="bi bi-plus-circle"></i>
                     <span>Post</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="#">
+                <a class="nav-link text-dark" href="#">
                     <i class="bi bi-bookmarks"></i>
                     <span>Saved</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="#">
+                <a class="nav-link text-dark" href="#">
                     <i class="bi bi-person-fill"></i>
                     <span>Profile</span>
                 </a>

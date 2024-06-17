@@ -2,8 +2,8 @@
 <div class="row px-3">
     <div class="card card-custom">
         <div class="card-body">
-            <h4 class="mb-0 text-light"> Share your culinary experience </h4>
-            <hr class="border-primary opacity-100 border-2 mb-3">
+            <p class="fs-4 fw-semibold mb-0 text-dark">Share your culinary experience</p>
+            <hr class="border-primary opacity-100 border-2 mb-3 mt-2">
             <form action="{{ route('stories.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
