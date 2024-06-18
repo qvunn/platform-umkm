@@ -36,25 +36,25 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="text-light nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="text-dark nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="text-light nav-link active" aria-current="page" href="/">About</a>
+                        <a class="text-dark nav-link active" aria-current="page" href="/">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="text-light nav-link active" aria-current="page" href="/">Feeds</a>
+                        <a class="text-dark nav-link active" aria-current="page" href="/">Feeds</a>
                     </li>
                     <li class="nav-item">
-                        <a class="text-light nav-link active" aria-current="page" href="/">Terms</a>
+                        <a class="text-dark nav-link active" aria-current="page" href="/">Terms</a>
                     </li>
                     <li class="nav-item">
-                        <a class="text-light nav-link active" aria-current="page" href="/">Contact</a>
+                        <a class="text-dark nav-link active" aria-current="page" href="/">Contact</a>
                     </li>
                 </ul>
             </div>
             <div>
             </div>
-            <hr class="border-primary opacity-100 border-2 mb-0">
+            <hr class="border-blue opacity-100 border-2 mb-0">
         </div>
     </div>
 </nav>

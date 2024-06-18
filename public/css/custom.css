@@ -8,30 +8,67 @@
 #121212
 */
 
+:root {
+    --color-blue: #1140ad;
+}
+
+
 body {
     background-color: #f6f6f6;
 }
 
-.card-custom {
+.card {
     background-color: #ffffff;
     border: none;
 }
 
+
+/* ? Form */
 .form-control {
-    color: #bbbbbb;
+    color: #8a8e94;
     border: none;
     width: 100%;
     resize: none;
     min-height: 30px;
     overflow: hidden;
-    background-color: #21252b;
+    background-color: #eceef2;
 }
 
 .form-control::placeholder {
-    color: #bbbbbb;
+    color: #8a8e94;
     border: none;
 }
 
 .form-select::placeholder {
     color: #bbbbbb;
+}
+
+.form-select option:hover {
+    color: blue;
+    background-color: inherit;
+}
+
+
+/* ? Navigation hover */
+.nav-link {
+    color: black;
+}
+
+.nav-link:hover {
+    color: var(--color-blue);
+}
+
+
+/* ? Its icon */
+i {
+    margin-top: -2px;
+}
+
+.bg-blue {
+    background-color: var(--color-blue);
+    color: #ffffff;
+}
+
+.border-blue {
+    border-color: var(--color-blue);
 }

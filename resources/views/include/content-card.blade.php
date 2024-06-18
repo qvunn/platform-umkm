@@ -24,7 +24,7 @@
             {{ $feed->contents }}
         </p>
         <div class="pb-2">
-            <span class="badge rounded-pill text-bg-primary">{{ $feed->category->category_name }}</span>
+            <span class="badge rounded-pill bg-blue ">{{ $feed->category->category_name }}</span>
         </div>
 
         <div class="d-flex justify-content-between">
