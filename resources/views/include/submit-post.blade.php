@@ -3,11 +3,12 @@
     <div class="card card-custom">
         <div class="card-body">
             <p class="fs-4 fw-semibold mb-0 text-dark">Share your culinary experience</p>
-            <hr class="border-primary opacity-100 border-2 mb-3 mt-2">
+            <hr class="border-blue opacity-100 border-2 mb-3 mt-2">
             <form action="{{ route('stories.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <textarea name="story" placeholder="Write your story here" class="form-control text-secondary" id="story" rows="3"></textarea>
+                    <textarea name="story" placeholder="Write your story here" class="form-control text-secondary" id="story"
+                        rows="7"></textarea>
                     @error('story')
                         <span class="d-block fs-6 mt-2 text-danger">{{ $message }}</span>
                     @enderror
@@ -24,9 +25,11 @@
 
                 <div class="mb-3">
                     <select name="category" id="category" class="form-control">
-                        <option class="text-secondary" value="" disabled selected hidden>Select a category</option>
+                        <option class="text-secondary" value="" disabled selected hidden>Select a category
+                        </option>
                         @foreach ($categories as $category)
-                            <option class="text-secondary hover-none" value="{{ $category->id }}">{{ $category->category_name }}</option>
+                            <option class="text-secondary hover-none" value="{{ $category->id }}">
+                                {{ $category->category_name }}</option>
                         @endforeach
                     </select>
                     @error('category')

@@ -6,6 +6,8 @@
 #21252b
 #282c34
 #121212
+#f0f1f3 bg-1
+#f6f6f6 bg-2
 */
 
 :root {
@@ -14,7 +16,7 @@
 
 
 body {
-    background-color: #f6f6f6;
+    background-color: #f0f1f3;
 }
 
 .card {
@@ -52,10 +54,10 @@ body {
 /* ? Navigation hover */
 .nav-link {
     color: black;
-}
 
-.nav-link:hover {
-    color: var(--color-blue);
+    &:hover {
+        color: var(--color-blue);
+    }
 }
 
 
@@ -71,4 +73,20 @@ i {
 
 .border-blue {
     border-color: var(--color-blue);
+}
+
+.category-link:hover {
+    animation: link-hover 0.2s ease-in-out;
+}
+
+@keyframes link-hover {
+    from {
+        transform: translateY(0);
+        /* Start from no vertical movement */
+    }
+
+    to {
+        transform: translateY(-3px);
+        /* Move slightly down on hover */
+    }
 }

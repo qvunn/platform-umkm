@@ -43,20 +43,25 @@
             </div> {{-- ? SEARCH BAR END --}}
 
             <div class="card text-dark mt-3"> {{-- ? Categories --}}
-                <div class="card-header pb-0 border-0">
-                </div>
-                <div class="card-body">
+                <div class="card-body mx-2">
                     <p class="fs-5 fw-semibold text-dark">Categories</p>
                     <hr class="border-blue opacity-100 border-2 py-0">
+
                     @foreach ($categories as $cat)
-                        <a class="nav-link text-decoration-none" href="{{ route('category', $cat->category_name) }}">
-                            <h6>
+                        <a class="nav-link category-link d-flex align-items-start text-decoration-none py-1"
+                            href="{{ route('category', $cat->category_name) }}">
+                            <i class="me-3 {{ isset($categoryIcons[$cat->category_name]) ? $categoryIcons[$cat->category_name] : '' }}"
+                                style="margin-top: 2px;"></i>
+                            <h6 class="fw-medium">
                                 {{ $cat->category_name }}
                             </h6>
                         </a>
                     @endforeach
-                    <a href="/" class="nav-link text-decoration-none">
-                        <h6>Show All</h6>
+                    <a href="/" class="category-link d-flex align-items-center nav-link text-decoration-none py-1">
+                        <i class="fa-solid fa-utensils fa-fw me-3"></i>
+                        <h6 class="fw-medium">
+                            Show All
+                        </h6>
                     </a>
                 </div>
             </div> {{-- ? Categories END --}}

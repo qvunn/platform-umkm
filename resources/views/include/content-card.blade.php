@@ -1,12 +1,13 @@
-<div class="card card-custom">
-    <div class="px-3 pt-4 pb-2">
+<div class="card">
+    <div class="card-body px-3 pt-4 pb-2">
         <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
                 {{-- <img style="width:50px" class="me-2 avatar-sm rounded-circle" src="https://api.dicebear.com/6.x/fun-emoji/svg?seed=Mario" alt="Mario Avatar"> --}}
-                <img style="width:50px" class="me-2 avatar-sm rounded-circle" src="{{ asset('img/logo.png') }}" alt="Avatar">
+                <img style="width:50px" class="me-2 avatar-sm rounded-circle" src="{{ asset('img/logo.png') }}"
+                    alt="Avatar">
                 <div class="card-title mb-0">
                     <h5>
-                        <a class="text-decoration-none text-dark" href="#">Alfin</a>
+                        <a class="nav-link text-decoration-none" href="#">Alfin Ahsanul</a>
                     </h5>
                 </div>
             </div>
@@ -21,7 +22,7 @@
     </div>
     <div class="card-body text-dark">
         <p class="fs-6 fw-normal">
-            {{ $feed->contents }}
+            {!! nl2br(e($feed->contents)) !!}
         </p>
         <div class="pb-2">
             <span class="badge rounded-pill bg-blue ">{{ $feed->category->category_name }}</span>
@@ -34,7 +35,7 @@
             </div>
             <div>
                 <span class="fs-6 fw-light"> <span class="fas fa-clock"> </span>
-                    {{ $feed->created_at }} </span>
+                    {{ date('d-m-Y', strtotime($feed->created_at)) }} </span>
             </div>
         </div>
         <hr class="border-primary">

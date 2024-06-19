@@ -26,11 +26,9 @@
     <div class="container">
         <div class="col">
             <div class="d-flex justify-content-center">
-                <a class="pt-2" href="/">
-                    <img id="logo" class="img-fluid mx-auto" 
-                    src="{{ asset('img/logo.png') }}"
-                    {{-- src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/32877/logo-thing.png" width="200" --}}
-                     width="100" alt="Logo">
+                <a class="pt-0" href="/">
+                    <img id="logo" class="img-fluid mx-auto" src="{{ asset('img/logo.png') }}" width="100"
+                        alt="Logo">
                 </a>
             </div>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
@@ -39,10 +37,10 @@
                         <a class="text-dark nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="text-dark nav-link active" aria-current="page" href="/">About</a>
+                        <a class="text-dark nav-link active" aria-current="page" href="/">Feed</a>
                     </li>
                     <li class="nav-item">
-                        <a class="text-dark nav-link active" aria-current="page" href="/">Feeds</a>
+                        <a class="text-dark nav-link active" aria-current="page" href="/">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="text-dark nav-link active" aria-current="page" href="/">Terms</a>
@@ -51,8 +49,6 @@
                         <a class="text-dark nav-link active" aria-current="page" href="/">Contact</a>
                     </li>
                 </ul>
-            </div>
-            <div>
             </div>
             <hr class="border-blue opacity-100 border-2 mb-0">
         </div>
