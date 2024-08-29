@@ -51,7 +51,7 @@
                         <a class="nav-link category-link d-flex align-items-start text-decoration-none py-1"
                             href="{{ route('category', $cat->category_name) }}">
                             <i class="me-3 {{ isset($categoryIcons[$cat->category_name]) ? $categoryIcons[$cat->category_name] : '' }}"
-                                style="margin-top: 2px;"></i>
+                                style="margin-top: 3px"></i>
                             <h6 class="fw-medium">
                                 {{ $cat->category_name }}
                             </h6>

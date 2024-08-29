@@ -15,6 +15,7 @@ class DashboardController extends Controller
             'Appetizer' => 'fa-solid fa-hotdog fa-fw',
             'Beverage' => 'fa-solid fa-beer-mug-empty fa-fw',
             'Dessert' => 'fa-solid fa-ice-cream fa-fw',
+            'Snack' => 'fa-solid fa-cookie fa-fw',
             'Main Course' => 'fa-solid fa-bowl-rice fa-fw',
         ];
 
@@ -28,13 +29,14 @@ class DashboardController extends Controller
         $category = Categorie::where('category_name', $name)->first();
 
         $categoryIcons = [
-            'Appetizer' => 'fa-solid fa-shrimp fa-fw',
-            'Beverage' => 'fa-solid fa-mug-hot fa-fw',
+            'Appetizer' => 'fa-solid fa-hotdog fa-fw',
+            'Beverage' => 'fa-solid fa-beer-mug-empty fa-fw',
             'Dessert' => 'fa-solid fa-ice-cream fa-fw',
-            'Main Course' => 'fa-solid fa-burger fa-fw',
+            'Snack' => 'fa-solid fa-cookie fa-fw',
+            'Main Course' => 'fa-solid fa-bowl-rice fa-fw',
         ];
 
-        $feeds = Feed::orderBy('created_at', 'desc')->paginate(5);
+        $feeds = Feed::where('category_id', $category->id) -> orderBy('created_at', 'desc') -> paginate(5);
         $categories = Categorie::all()->sortBy('category_name');
 
         return view("dashboard", compact('feeds', 'categories', 'categoryIcons'));

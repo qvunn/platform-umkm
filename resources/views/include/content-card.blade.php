@@ -6,7 +6,7 @@
                 <img style="width:50px" class="me-2 avatar-sm rounded-circle" src="{{ asset('img/logo.png') }}"
                     alt="Avatar">
                 <div class="card-title mb-0">
-                    <h5>
+                    <h5 class="fw-semibold">
                         <a class="nav-link text-decoration-none" href="#">Alfin Ahsanul</a>
                     </h5>
                 </div>
@@ -34,11 +34,12 @@
                     </span> {{ $feed->likes }} </a>
             </div>
             <div>
-                <span class="fs-6 fw-light"> <span class="fas fa-clock"> </span>
-                    {{ date('d-m-Y', strtotime($feed->created_at)) }} </span>
+                <span class="fs-6 fw-light">
+                    {{ date('d-m-Y', strtotime($feed->created_at)) }}
+                </span>
             </div>
         </div>
-        <hr class="border-primary">
+        <hr class="border-blue opacity-100 border-2">
         {{-- <div> // Comment
             <div class="mb-3">
                 <textarea class="fs-6 form-control" rows="1"></textarea>

@@ -24,7 +24,7 @@ class CategoriesTable extends Seeder
             'category_name' => 'Main Course',
         ]);
         Categorie::create([
-            'category_name' => 'Fruit',
+            'category_name' => 'Snack',
         ]);
         Categorie::create([
             'category_name' => 'Beverage',
