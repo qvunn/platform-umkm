@@ -35,19 +35,13 @@
 
         <div class="col-3"> {{-- ? RIGHT CONTAINER --}}
 
-            <div class="card"> {{-- ? SEARCH BAR --}}
-                <div class="card-body">
-                    <p class="fs-5 fw-semibold text-dark">Search</p>
-                    {{-- <hr class="border-primary opacity-100 border-2 mb-3"> --}}
-                    <input placeholder="Type here" class="text-secondary bg-white-50 form-control w-100" type="text"
-                        id="search">
-                    <button class="btn btn-primary bg-blue mt-3">Find</button>
-                </div>
-            </div> {{-- ? SEARCH BAR END --}}
+            {{-- ? SEARCH BAR --}}
+            @include('include.search-bar')
+            {{-- ? SEARCH BAR END --}}
 
             <div class="card text-dark mt-3"> {{-- ? Categories --}}
                 <div class="card-body mx-2">
-                    <p class="fs-5 fw-semibold text-dark">Categories</p>
+                    <p class="fs-5 fw-semibold text-dark">Kategori apa?</p>
                     <hr class="border-blue opacity-100 border-2 py-0">
                     @foreach ($categories as $category)
                         <a class="nav-link category-link d-flex align-items-start text-decoration-none py-1"
@@ -61,9 +55,7 @@
                     @endforeach
                     <a href="/" class="category-link d-flex align-items-center nav-link text-decoration-none py-1">
                         <i class="fa-solid fa-utensils fa-fw me-3"></i>
-                        <h6 class="fw-medium">
-                            Show All
-                        </h6>
+                        <h6 class="fw-medium">Tampilin semua</h6>
                     </a>
                 </div>
             </div> {{-- ? Categories END --}}
