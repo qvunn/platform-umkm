@@ -12,18 +12,63 @@
                 </div>
             </div>
             <div class="">
-                <form method="POST" action="{{ route('stories.destroy', $feed->id) }}">
+                <form method="POST" action="{{ route('feeds.destroy', $feed->id) }}">
                     @csrf
                     @method('delete')
-                    <button class="btn btn-danger btn-sm">X</button>
+                    <a class="mx-2" href="{{ route('feeds.edit', $feed->id) }}">Edit</a>
+                    <a href="{{ route('feeds.show', $feed->id) }}">View</a>
+                    <button class="ms-1 btn btn-danger btn-sm">X</button>
                 </form>
             </div>
         </div>
     </div>
     <div class="card-body text-dark">
-        <p class="fs-6 fw-normal">
-            {!! nl2br(e($feed->contents)) !!}
-        </p>
+        @if ($editing ?? false)
+            <form action="{{ route('feeds.update', $feed->id) }}" method="POST">
+                @csrf
+                @method('put')
+                <div class="mb-3">
+                    <textarea name="content" placeholder="Write your story here" class="form-control text-secondary" id="content"
+                        rows="7">{{ old('content', $feed->content) }}</textarea>
+                    @error('content')
+                        <span class="d-block fs-6 mt-2 text-danger">{{ $message }}</span>
+                    @enderror
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const textarea = document.getElementById('feed');
+                            textarea.addEventListener('input', function() {
+                                this.style.height = 'auto';
+                                this.style.height = this.scrollHeight + 'px';
+                            });
+                        });
+                    </script>
+                </div>
+
+                <div class="mb-3">
+                    <select name="category" id="category" class="form-control">
+                        <option class="text-secondary" value="" disabled selected hidden>
+                            Select a category
+                        </option>
+                        @foreach ($categories as $category)
+                            <option class="text-secondary hover-none" value="{{ $category->id }}"
+                                {{ old('category', $feed->category_id) == $category->id ? 'selected' : '' }}>
+                                {{ $category->category_name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('category')
+                        <span class="d-block fs-6 mt-2 text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary bg-blue btn-sm mb-2">Update</button>
+                </div>
+            </form>
+        @else
+            <p class="fs-6 fw-normal">
+                {!! nl2br(e($feed->content)) !!}
+            </p>
+        @endif
         <div class="pb-2">
             <span class="badge rounded-pill bg-blue ">{{ $feed->category->category_name }}</span>
         </div>

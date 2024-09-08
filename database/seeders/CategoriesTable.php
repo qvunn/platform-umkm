@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Categorie;
+use App\Models\Category;
 
 class CategoriesTable extends Seeder
 {
@@ -14,20 +14,17 @@ class CategoriesTable extends Seeder
     public function run(): void
     {
         
-        Categorie::create([
-            'category_name' => 'Dessert',
+        Category::create([
+            'category_name' => 'Jajanan Manis',
         ]);
-        Categorie::create([
-            'category_name' => 'Appetizer',
+        Category::create([
+            'category_name' => 'Jajanan Asin',
         ]);
-        Categorie::create([
-            'category_name' => 'Main Course',
+        Category::create([
+            'category_name' => 'Makanan Berat',
         ]);
-        Categorie::create([
-            'category_name' => 'Snack',
-        ]);
-        Categorie::create([
-            'category_name' => 'Beverage',
+        Category::create([
+            'category_name' => 'Minuman',
         ]);
     }
 }

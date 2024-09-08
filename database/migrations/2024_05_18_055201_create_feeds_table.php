@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('feeds', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
-            $table->string('contents');
-            $table->unsignedInteger('likes')->default(0);
+            $table->string('content');
+            $table->unsignedInteger('like')->default(0);
             $table->timestamps();
         });
     }

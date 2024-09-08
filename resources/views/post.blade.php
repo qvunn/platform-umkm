@@ -1,14 +1,14 @@
 @extends('layout.header')
 @section('content')
     <div class="row">
-        <div class="col-2"> {{-- ? Left Sidebar --}}
+        {{-- ? Left Sidebar --}}
+        <div class="col-2">
             @include('include.left-sidebar')
-        </div> {{-- ? Left Sidebar END --}}
+        </div>
 
         <div class="col-7">
             {{-- ? Submit content --}}
-            @include('include.submit-post')
-            {{-- ? Submit content END --}}
+            @include('include.content-submit')
         </div>
 
         <div class="col-3">

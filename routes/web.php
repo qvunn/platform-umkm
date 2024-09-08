@@ -1,20 +1,26 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FeedController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [DashboardController::class,'index'])->name('dashboard');
+Route::get('/', [FeedController::class, 'index'])->name('feed');
 
-Route::get('/post', [PostController::class,'index'])->name('post');
+Route::get('/category/{name}', [FeedController::class, 'feedcategory'])->name('category');
 
-Route::get('/category/{name}', [DashboardController::class,'feedcategory'])->name('category');
+Route::get('/feeds', [PostController::class, 'index'])->name('feeds.index');
 
-Route::post('/stories', [PostController::class,'store'])->name('stories.store');
+Route::get('/feeds/{feed}', [PostController::class, 'show'])->name('feeds.show');
 
-Route::delete('/stories/{id}', [PostController::class,'destroy'])->name('stories.destroy');
+Route::get('/feeds/{feed}/edit', [PostController::class, 'edit'])->name('feeds.edit');
 
-Route::get('/terms', function(){
+Route::put('/feeds/{feed}', [PostController::class, 'update'])->name('feeds.update');
+
+Route::post('/feeds', [PostController::class, 'store'])->name('feeds.store');
+
+Route::delete('/feeds/{feed}', [PostController::class, 'destroy'])->name('feeds.destroy');
+
+Route::get('/terms', function () {
     return view('terms');
 });

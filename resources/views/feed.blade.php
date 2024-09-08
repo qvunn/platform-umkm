@@ -1,14 +1,17 @@
 @extends('layout.header')
 @section('content')
-    <div class="row"> {{-- ! MAIN CONTAINER --}}
+    <div class="row">
 
-        <div class="col-2"> {{-- ? Left Sidebar --}}
+        {{-- ? Left Sidebar --}}
+        <div class="col-2">
             @include('include.left-sidebar')
-        </div> {{-- ? Left Sidebar END --}}
+        </div>
+        {{-- ? Left Sidebar END --}}
 
-        <div class="col-8"> {{-- ! MAIN FEED --}}
+
+        <div class="col-7"> {{-- ! MAIN FEED --}}
             {{-- ? Flash message --}}
-            @include('include.success-message')
+            @include('include.message-success')
             {{-- ? Flash message END --}}
 
             {{-- ? Submit content --}}
@@ -30,7 +33,7 @@
         </div> {{-- ! MAIN FEED END --}}
 
 
-        <div class="col-2"> {{-- ? RIGHT CONTAINER --}}
+        <div class="col-3"> {{-- ? RIGHT CONTAINER --}}
 
             <div class="card"> {{-- ? SEARCH BAR --}}
                 <div class="card-body">
@@ -46,14 +49,13 @@
                 <div class="card-body mx-2">
                     <p class="fs-5 fw-semibold text-dark">Categories</p>
                     <hr class="border-blue opacity-100 border-2 py-0">
-
-                    @foreach ($categories as $cat)
+                    @foreach ($categories as $category)
                         <a class="nav-link category-link d-flex align-items-start text-decoration-none py-1"
-                            href="{{ route('category', $cat->category_name) }}">
-                            <i class="me-3 {{ isset($categoryIcons[$cat->category_name]) ? $categoryIcons[$cat->category_name] : '' }}"
+                            href="{{ route('category', $category->category_name) }}">
+                            <i class="me-3 {{ isset($categoryIcons[$category->category_name]) ? $categoryIcons[$category->category_name] : '' }}"
                                 style="margin-top: 3px"></i>
                             <h6 class="fw-medium">
-                                {{ $cat->category_name }}
+                                {{ $category->category_name }}
                             </h6>
                         </a>
                     @endforeach

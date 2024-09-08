@@ -11,11 +11,11 @@ class Feed extends Model
 
     protected $fillable = [
         'category_id',
-        'contents',
-        'likes',
+        'content',
+        'like',
     ];
 
     public function category(){
-        return $this->belongsTo(Categorie::class);
+        return $this->belongsTo(Category::class);
     }
 }
