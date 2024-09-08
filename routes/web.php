@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,9 @@ Route::put('/feeds/{feed}', [PostController::class, 'update'])->name('feeds.upda
 Route::post('/feeds', [PostController::class, 'store'])->name('feeds.store');
 
 Route::delete('/feeds/{feed}', [PostController::class, 'destroy'])->name('feeds.destroy');
+
+Route::post('/feeds/{feed}/comments', [CommentController::class, 'store'])->name('feeds.comments.store');
+
 
 Route::get('/terms', function () {
     return view('terms');

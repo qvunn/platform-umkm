@@ -23,20 +23,22 @@ class PostController extends Controller
 
     public function store()
     {
-        request()->validate([
+        // Validate the request data
+        $validated = request()->validate([
             'content' => 'required|min:5|max:1000',
             'category' => 'required'
         ]);
 
-        $feed = Feed::create(
-            [
-                'content' => request()->get('content'),
-                'category_id' => request()->get('category')
-            ]
-        );
+        // Create the feed entry in the database
+        Feed::create([
+            'content' => $validated['content'],
+            'category_id' => $validated['category']
+        ]);
 
+        // Redirect back to the feed with a success message
         return redirect()->route('feed')->with('success', 'Story has been shared successfully!');
     }
+
 
     public function destroy(Feed $feed)
     {
@@ -56,15 +58,15 @@ class PostController extends Controller
     public function update(Feed $feed)
     {
         // Validate the form data
-        request()->validate([
+        $validated = request()->validate([
             'content' => 'required|min:5|max:1000',
             'category' => 'required'
         ]);
 
         // Update the existing feed
         $feed->update([
-            'content' => request()->get('content'),
-            'category_id' => request()->get('category')
+            'content' => $validated['content'],
+            'category_id' => $validated['category']
         ]);
 
         // Redirect back to the feed page with a success message

@@ -15,7 +15,13 @@ class Feed extends Model
         'like',
     ];
 
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
