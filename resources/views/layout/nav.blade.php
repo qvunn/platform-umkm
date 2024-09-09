@@ -48,9 +48,14 @@
                     <li class="nav-item">
                         <a class="text-dark nav-link active" aria-current="page" href="/">Contact</a>
                     </li>
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/login">Login</a>
+                        </li>
+                    @endguest
                 </ul>
             </div>
-            <hr class="border-blue opacity-100 border-2 mb-0">
+            <hr class="border-blue opacity-100 border-3 mb-0">
         </div>
     </div>
 </nav>
