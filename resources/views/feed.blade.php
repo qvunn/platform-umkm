@@ -9,28 +9,30 @@
         {{-- ? Left Sidebar END --}}
 
 
-        <div class="col-7"> {{-- ! MAIN FEED --}}
+        {{-- ! MAIN FEED --}}
+        <div class="col-7">
             {{-- ? Flash message --}}
             @include('include.message-success')
             {{-- ? Flash message END --}}
 
-            {{-- ? Submit content --}}
-            {{-- @include('include.submit-post') --}}
-            {{-- ? Submit content END --}}
-
-            {{-- <hr> --}}
-
             {{-- ? Main content --}}
-            @foreach ($feeds as $feed)
+            @forelse($feeds as $feed)
                 <div class="mb-3">
                     @include('include.content-card')
                 </div>
-            @endforeach
+            @empty
+                <div class="card">
+                    <p class="my-3 text-center">
+                        Yahh ngga ada.
+                    </p>
+                </div>
+            @endforelse
             <div class="mt-3">
-                {{ $feeds->links() }}
+                {{ $feeds->withQueryString()->links() }}
             </div>
             {{-- ? Main content --}}
-        </div> {{-- ! MAIN FEED END --}}
+        </div>
+        {{-- ! MAIN FEED END --}}
 
 
         <div class="col-3"> {{-- ? RIGHT CONTAINER --}}
