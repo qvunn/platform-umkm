@@ -45,7 +45,7 @@ class PostController extends Controller
 
     public function destroy(Feed $feed)
     {
-        if(auth()->id() !== $feed->user_id){
+        if (auth()->id() !== $feed->user_id) {
             abort(404);
         }
 
@@ -56,10 +56,10 @@ class PostController extends Controller
 
     public function edit(Feed $feed)
     {
-        if(auth()->id() !== $feed->user_id){
+        if (auth()->id() !== $feed->user_id) {
             abort(404);
         }
-        
+
         $editing = true;
         $categories = Category::all()->sortBy('category_name');
 
@@ -68,7 +68,7 @@ class PostController extends Controller
 
     public function update(Feed $feed)
     {
-        if(auth()->id() !== $feed->user_id){
+        if (auth()->id() !== $feed->user_id) {
             abort(404);
         }
 
