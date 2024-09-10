@@ -2,12 +2,10 @@
     <div class="card-body px-3 pt-4 pb-2">
         <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
-                {{-- <img style="width:50px" class="me-2 avatar-sm rounded-circle" src="https://api.dicebear.com/6.x/fun-emoji/svg?seed=Mario" alt="Mario Avatar"> --}}
-                <img style="width:50px" class="me-2 avatar-sm rounded-circle" src="{{ asset('img/logo.png') }}"
-                    alt="Avatar">
+                <img style="width:50px" class="me-2 avatar-sm rounded-circle" src="https://api.dicebear.com/6.x/fun-emoji/svg?seed={{ $feed->user->name }}" alt="{{ $feed->user->name }}">
                 <div class="card-title mb-0">
                     <h5 class="fw-semibold">
-                        <a class="nav-link text-decoration-none" href="#">Alfin Ahsanul</a>
+                        <a class="nav-link text-decoration-none" href="#">{{ $feed->user->name }}</a>
                     </h5>
                 </div>
             </div>

@@ -29,10 +29,13 @@ class PostController extends Controller
             'category' => 'required'
         ]);
 
+        $validated['user_id'] = auth()->id();
+
         // Create the feed entry in the database
         Feed::create([
             'content' => $validated['content'],
-            'category_id' => $validated['category']
+            'category_id' => $validated['category'],
+            'user_id' => $validated['user_id']
         ]);
 
         // Redirect back to the feed with a success message
@@ -42,6 +45,10 @@ class PostController extends Controller
 
     public function destroy(Feed $feed)
     {
+        if(auth()->id() !== $feed->user_id){
+            abort(404);
+        }
+
         $feed->delete();
 
         return redirect()->route('feed')->with('success', 'Story has been deleted!');
@@ -49,6 +56,10 @@ class PostController extends Controller
 
     public function edit(Feed $feed)
     {
+        if(auth()->id() !== $feed->user_id){
+            abort(404);
+        }
+        
         $editing = true;
         $categories = Category::all()->sortBy('category_name');
 
@@ -57,6 +68,10 @@ class PostController extends Controller
 
     public function update(Feed $feed)
     {
+        if(auth()->id() !== $feed->user_id){
+            abort(404);
+        }
+
         // Validate the form data
         $validated = request()->validate([
             'content' => 'required|min:5|max:1000',

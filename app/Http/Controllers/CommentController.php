@@ -12,6 +12,7 @@ class CommentController extends Controller
     {
         $comment = new Comment();
         $comment->feed_id = $feed->id;
+        $comment->user_id = auth()->id();
         $comment->content = request()->content;
         $comment->save();
 
