@@ -33,7 +33,7 @@
             @guest
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-start text-decoration-none icon-link icon-link-hover"
-                        style="--bs-icon-link-transform: translate3d(0, -.225rem, 0);" href="/login">
+                        style="--bs-icon-link-transform: translate3d(0, -.225rem, 0);" href="{{ route('login') }}">
                         <i class="bi bi-person-fill me-2"></i>
                         <span class="fw-medium">Login</span>
                     </a>
@@ -42,13 +42,16 @@
             @auth()
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-start text-decoration-none icon-link icon-link-hover"
-                        style="--bs-icon-link-transform: translate3d(0, -.225rem, 0);" href="#">
+                        style="--bs-icon-link-transform: translate3d(0, -.225rem, 0);" href="{{ route('profile') }}">
                         <i class="bi bi-person-fill me-2"></i>
                         <span class="fw-medium">{{ Auth::user()->name }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link d-flex align-items-start text-decoration-none icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.225rem, 0);" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <a href="#"
+                        class="nav-link d-flex align-items-start text-decoration-none icon-link icon-link-hover"
+                        style="--bs-icon-link-transform: translate3d(0, -.225rem, 0);"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="bi bi-box-arrow-left me-2"></i>
                         <span class="fw-medium">Logout</span>
                     </a>

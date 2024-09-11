@@ -16,11 +16,6 @@ class PostController extends Controller
         ]);
     }
 
-    public function show(Feed $feed)
-    {
-        return view('contents.show', compact('feed'));
-    }
-
     public function store()
     {
         // Validate the request data
@@ -42,16 +37,9 @@ class PostController extends Controller
         return redirect()->route('feed')->with('success', 'Story has been shared successfully!');
     }
 
-
-    public function destroy(Feed $feed)
+    public function show(Feed $feed)
     {
-        if (auth()->id() !== $feed->user_id) {
-            abort(404);
-        }
-
-        $feed->delete();
-
-        return redirect()->route('feed')->with('success', 'Story has been deleted!');
+        return view('contents.show', compact('feed'));
     }
 
     public function edit(Feed $feed)
@@ -86,5 +74,16 @@ class PostController extends Controller
 
         // Redirect back to the feed page with a success message
         return redirect()->route('feeds.show', $feed->id)->with('success', 'Story updated successfully!');
+    }
+
+    public function destroy(Feed $feed)
+    {
+        if (auth()->id() !== $feed->user_id) {
+            abort(404);
+        }
+
+        $feed->delete();
+
+        return redirect()->route('feed')->with('success', 'Story has been deleted!');
     }
 }

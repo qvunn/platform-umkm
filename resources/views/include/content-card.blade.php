@@ -2,10 +2,12 @@
     <div class="card-body px-3 pt-4 pb-2">
         <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
-                <img style="width:50px" class="me-2 avatar-sm rounded-circle" src="https://api.dicebear.com/6.x/fun-emoji/svg?seed={{ $feed->user->name }}" alt="{{ $feed->user->name }}">
+                <img style="width:50px" class="me-2 avatar-sm rounded-circle" src="{{ $feed->user->getImageURL() }}"
+                    alt="{{ $feed->user->name }}">
                 <div class="card-title mb-0">
                     <h5 class="fw-semibold">
-                        <a class="nav-link text-decoration-none" href="#">{{ $feed->user->name }}</a>
+                        <a class="nav-link text-decoration-none"
+                            href="{{ route('users.show', $feed->user->id) }}">{{ $feed->user->name }}</a>
                     </h5>
                 </div>
             </div>
@@ -26,7 +28,7 @@
                 @csrf
                 @method('put')
                 <div class="mb-3">
-                    <textarea name="content" placeholder="Write your story here" class="form-control text-secondary" id="content"
+                    <textarea name="content" id="content" class="form-control text-secondary" placeholder="Write your story here"
                         rows="7">{{ old('content', $feed->content) }}</textarea>
                     @error('content')
                         <span class="d-block fs-6 mt-2 text-danger">{{ $message }}</span>
@@ -72,9 +74,16 @@
         </div>
 
         <div class="d-flex justify-content-between">
-            <div>
-                <a href="#" class="fw-light nav-link fs-6"> <span class="fas fa-heart me-1">
-                    </span> {{ $feed->likes }} </a>
+            <div class="d-flex">
+                <a href="#" class="fw-light nav-link fs-6">
+                    <span class="fas fa-heart me-1"></span>
+                    1000
+                    {{-- {{ $feed->likes }} --}}
+                </a>
+                <a href="{{ route('feeds.show', $feed->id) }}" class="fw-light nav-link fs-6 ms-4">
+                    <span class="fas fa-comment me-1"></span>
+                    {{ $feed->comments()->count() }}
+                </a>
             </div>
             <div>
                 <span class="fs-6 fw-light">
@@ -83,7 +92,7 @@
             </div>
         </div>
         <hr class="border-blue opacity-100 border-2">
-        
+
         @include('include.comments-box')
     </div>
 </div>

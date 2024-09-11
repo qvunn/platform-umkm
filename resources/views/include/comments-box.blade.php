@@ -12,10 +12,14 @@
     @foreach ($feed->comments as $comment)
         <div class="d-flex align-items-start">
             <img style="width:35px" class="me-2 avatar-sm rounded-circle"
-                src="https://api.dicebear.com/6.x/fun-emoji/svg?seed={{ $feed->user->name }}" alt="{{ $feed->user->name }} Avatar">
+                src="{{ $comment->user->getImageURL() }}"
+                alt="{{ $comment->user->name }}">
             <div class="w-100">
                 <div class="d-flex justify-content-between">
-                    <h6 class="">{{ $feed->user->name }}
+                    <h6 class="">
+                        <a class="nav-link text-decoration-none" href="{{ route('users.show', $comment->user->id) }}">
+                            {{ $comment->user->name }}
+                        </a>
                     </h6>
                     <small class="fs-6 fw-light text-muted">{{ $comment->created_at }}</small>
                 </div>

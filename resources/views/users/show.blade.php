@@ -2,28 +2,29 @@
 @section('content')
     <div class="row">
 
-        {{-- ? Left Sidebar --}}
+        {{-- # LEFT CONTAINER --}}
         <div class="col-2">
             @include('include.left-sidebar')
         </div>
-        {{-- ? Left Sidebar END --}}
+        {{-- # LEFT CONTAINER END --}}
 
 
-        {{-- ! MAIN FEED --}}
+        {{-- # MAIN FEED --}}
         <div class="col-7">
-            {{-- # SEARCH BAR --}}
-            @include('include.search-bar')
-            
-            {{-- # Flash message --}}
+            {{-- ? Flash message --}}
             @include('include.message-success')
 
             {{-- ? Main content --}}
+            <div class="mb-3">
+                @include('include.user-card')
+            </div>
+            <hr>
             @forelse($feeds as $feed)
-                <div class="my-3">
+                <div class="mb-3">
                     @include('include.content-card')
                 </div>
             @empty
-                <div class="card my-3">
+                <div class="card">
                     <p class="my-3 text-center">
                         Yahh ngga ada.
                     </p>
@@ -34,15 +35,16 @@
             </div>
             {{-- ? Main content --}}
         </div>
-        {{-- ! MAIN FEED END --}}
+        {{-- # MAIN FEED END --}}
 
 
-        <div class="col-3"> {{-- ? RIGHT CONTAINER --}}
-            {{-- # SEARCH BAR --}}
+        {{-- # RIGHT CONTAINER --}}
+        <div class="col-3">
+            {{-- ? SEARCH BAR --}}
             @include('include.search-bar')
-            {{-- # Categories --}}
-            @include('include.category-card')
-        </div>{{-- ? RIGHT CONTAINER END --}}
+            {{-- ? SEARCH BAR END --}}
+        </div>
+        {{-- # RIGHT CONTAINER END --}}
     </div>
 
     </div>
