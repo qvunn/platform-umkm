@@ -10,12 +10,21 @@
 
                     {{-- # Input name --}}
                     <div>
-                        <input name="name" value="{{ $user->name }}" type="text" class="form-control">
-                        @error('name')
-                            <span class="text-danger fs-6">{{ $message }}</span>
-                        @enderror
-                        <div class="mt-1">
-                            <span class="fs-6 text-muted">Bergabung sejak {{ $user->created_at->format('Y') }}</span>
+                        <div class="mb-0">
+                            <label for="">Type your display username</label>
+                            <input name="username" value="{{ old('username', $user->username) }}" type="text"
+                                class="form-control">
+                            @error('username')
+                                <span class="text-danger fs-6">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="mt-2">
+                            <label for="name">Type your name</label>
+                            <input name="name" value="{{ old('name', $user->name) }}" type="text"
+                                class="form-control">
+                            @error('name')
+                                <span class="text-danger fs-6">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -29,13 +38,33 @@
             </div>
 
             {{-- # Photo profile --}}
-            <div class="mt-4">
+            {{-- <div class="mt-4">
                 <label for="">Profile Picture</label>
                 <input type="file" name="image" class="form-control">
-                @error('iamge')
+                @error('image')
+                    <span class="text-danger fs-6">{{ $message }}</span>
+                @enderror
+            </div> --}}
+            <div class="mb-3">
+                <label for="image">Profile Picture</label>
+
+                <!-- Display the current image if it exists -->
+                @if ($user->image)
+                    <div class="mb-2">
+                        <img src="{{ $user->getImageURL() }}" alt="Profile Picture"
+                            style="width: 150px; height: 150px; object-fit: cover;" class="rounded-circle">
+                    </div>
+                @endif
+
+                <!-- File input for a new image -->
+                <input type="file" name="image" class="form-control">
+
+                <!-- Display validation error for image if exists -->
+                @error('image')
                     <span class="text-danger fs-6">{{ $message }}</span>
                 @enderror
             </div>
+
 
             {{-- # Bio --}}
             <div class="px-2 mt-4">

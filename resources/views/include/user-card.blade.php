@@ -2,11 +2,10 @@
     <div class="px-3 pt-4 pb-2">
         <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
-                <img style="width:150px" class="me-3 avatar-sm rounded-circle" src="{{ $user->getImageURL() }}"
-                    alt="{{ $user->name }}">
+                <img style="width:135px; height:135px; object-fit:cover;" class="me-3 avatar-sm rounded-circle"
+                    src="{{ $user->getImageURL() }}" alt="{{ $user->name }}">
                 <div>
-                    <h3 class="card-title mb-0"><a href="#"> {{ $user->name }}
-                        </a></h3>
+                    <span class="fs-3 fw-bold nav-link mb-0">&#64;{{ $user->username }}</span>
                     <div class="mt-1">
                         <span class="fs-6 text-muted">Bergabung sejak {{ $user->created_at->format('Y') }}</span>
                     </div>
@@ -21,8 +20,9 @@
             </div>
         </div>
         <div class="px-2 mt-4">
-            <h5 class="fs-5"> Little thing about me: </h5>
-            <p class="fs-6 fw-light">
+            <span class="fs-4 fw-semibold nav-link mb-3">{{ $user->name }}</span>
+            <h6 class="mb-0 fw-normal"> Little thing about me: </h6>
+            <p class="fs-6 fw-light mt-0">
                 {{ $user->bio }}
             </p>
             <div class="d-flex justify-content-start">

@@ -40,6 +40,7 @@ class UserController extends Controller
     {
         $validated = request()->validate([
             'name' => 'required|min:3|max:40',
+            'username' => ['required', 'string', 'max:255', 'unique:users,username,' . $user->id], // Unique validation
             'bio' => 'nullable|min:1|max:255',
             'image' => 'image',
         ]);

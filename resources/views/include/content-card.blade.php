@@ -2,13 +2,16 @@
     <div class="card-body px-3 pt-4 pb-2">
         <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
-                <img style="width:50px" class="me-2 avatar-sm rounded-circle" src="{{ $feed->user->getImageURL() }}"
-                    alt="{{ $feed->user->name }}">
+                <img style="width:50px; height:50px; object-fit:cover;" class="me-2 avatar-sm rounded-circle"
+                    src="{{ $feed->user->getImageURL() }}" alt="{{ $feed->user->name }}">
                 <div class="card-title mb-0">
-                    <h5 class="fw-semibold">
+                    <h5 class="fw-bold mb-1">
                         <a class="nav-link text-decoration-none"
-                            href="{{ route('users.show', $feed->user->id) }}">{{ $feed->user->name }}</a>
+                            href="{{ route('users.show', $feed->user->id) }}">{{ $feed->user->username }}</a>
                     </h5>
+                    <h6 class="fw-light">
+                        {{ date('d-m-Y', strtotime($feed->created_at)) }}
+                    </h6>
                 </div>
             </div>
             <div class="">
@@ -84,11 +87,6 @@
                     <span class="fas fa-comment me-1"></span>
                     {{ $feed->comments()->count() }}
                 </a>
-            </div>
-            <div>
-                <span class="fs-6 fw-light">
-                    {{ date('d-m-Y', strtotime($feed->created_at)) }}
-                </span>
             </div>
         </div>
         <hr class="border-blue opacity-100 border-2">

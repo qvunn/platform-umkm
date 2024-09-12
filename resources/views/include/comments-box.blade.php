@@ -11,21 +11,23 @@
     <hr>
     @foreach ($feed->comments as $comment)
         <div class="d-flex align-items-start">
-            <img style="width:35px" class="me-2 avatar-sm rounded-circle"
-                src="{{ $comment->user->getImageURL() }}"
-                alt="{{ $comment->user->name }}">
+            <img style="width:35px; height:35px; object-fit:cover;" class="me-3 mt-1 avatar-sm rounded-circle"
+                src="{{ $comment->user->getImageURL() }}" alt="{{ $comment->user->name }}">
             <div class="w-100">
-                <div class="d-flex justify-content-between">
-                    <h6 class="">
-                        <a class="nav-link text-decoration-none" href="{{ route('users.show', $comment->user->id) }}">
-                            {{ $comment->user->name }}
+                <div class="d-flex">
+                    <h6 class="mb-0">
+                        <a class="nav-link text-decoration-none fw-bold"
+                            href="{{ route('users.show', $comment->user->id) }}">
+                            {{ $comment->user->username }}
                         </a>
                     </h6>
-                    <small class="fs-6 fw-light text-muted">{{ $comment->created_at }}</small>
+                    <h6 class="fs-6 fw-light text-muted ms-2">
+                        {{ $comment->created_at->diffForHumans() }}
+                    </h6>
                 </div>
-                <p class="fs-6 mt-3 fw-light">
+                <h6 class="mt-1 fw-normal">
                     {{ $comment->content }}
-                </p>
+                </h6>
             </div>
         </div>
     @endforeach
