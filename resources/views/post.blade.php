@@ -1,12 +1,12 @@
 @extends('layout.header')
 @section('content')
-    <div class="row">
+    <div class="row justify-content-center">
         {{-- ? Left Sidebar --}}
         <div class="col-2">
             @include('include.left-sidebar')
         </div>
 
-        <div class="col-7">
+        <div class="col-6 mx-2">
             {{-- ? Submit content --}}
             @include('include.content-submit')
         </div>

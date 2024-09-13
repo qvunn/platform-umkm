@@ -4,7 +4,7 @@
             <div class="card-body">
                 <p class="fs-4 fw-semibold mb-0 text-dark">Share your culinary experience</p>
                 <hr class="border-blue opacity-100 border-2 mb-3 mt-2">
-                <form action="{{ route('feeds.store') }}" method="POST">
+                <form action="{{ route('feeds.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <textarea name="content" placeholder="Write your story here" class="form-control text-secondary" id="content"
@@ -22,7 +22,15 @@
                             });
                         </script>
                     </div>
+                    <div class="mb-3">
+                        <!-- File input for a new image -->
+                        <input type="file" name="image" class="form-control">
 
+                        <!-- Display validation error for image if exists -->
+                        @error('image')
+                            <span class="text-danger fs-6">{{ $message }}</span>
+                        @enderror
+                    </div>
                     <div class="mb-3">
                         <select name="category" id="category" class="form-control">
                             <option class="text-secondary" value="" disabled selected hidden>

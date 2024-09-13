@@ -1,6 +1,6 @@
 @extends('layout.header')
 @section('content')
-    <div class="row">
+    <div class="row justify-content-center">
 
         {{-- # LEFT CONTAINER --}}
         <div class="col-2">
@@ -10,7 +10,7 @@
 
 
         {{-- # MAIN FEED --}}
-        <div class="col-7">
+        <div class="col-6 mx-2">
             {{-- ? Flash message --}}
             @include('include.message-success')
 
@@ -19,7 +19,7 @@
                 @include('include.user-edit-card')
             </div>
             <hr>
-            @forelse($feeds as $feed)
+            {{-- @forelse($feeds as $feed)
                 <div class="mb-3">
                     @include('include.content-card')
                 </div>
@@ -29,7 +29,7 @@
                         Yahh ngga ada.
                     </p>
                 </div>
-            @endforelse
+            @endforelse --}}
             <div class="mt-3">
                 {{ $feeds->withQueryString()->links() }}
             </div>

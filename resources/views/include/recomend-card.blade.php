@@ -1,6 +1,6 @@
 <div class="card text-dark">
     <div class="card-body mx-2">
-        <p class="fs-5 fw-semibold text-dark">Kategori apa?</p>
+        <p class="fs-5 fw-semibold text-dark">Rekomendasi buat kamu</p>
         <hr class="border-blue opacity-100 border-2 py-0">
         @foreach ($categories as $category)
             <a class="nav-link category-link d-flex align-items-start text-decoration-none py-1"

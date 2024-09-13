@@ -45,16 +45,16 @@
                     <span class="text-danger fs-6">{{ $message }}</span>
                 @enderror
             </div> --}}
-            <div class="mb-3">
+            <div class="mb-3 mt-2">
                 <label for="image">Profile Picture</label>
 
                 <!-- Display the current image if it exists -->
-                @if ($user->image)
+                {{-- @if ($user->image)
                     <div class="mb-2">
                         <img src="{{ $user->getImageURL() }}" alt="Profile Picture"
                             style="width: 150px; height: 150px; object-fit: cover;" class="rounded-circle">
                     </div>
-                @endif
+                @endif --}}
 
                 <!-- File input for a new image -->
                 <input type="file" name="image" class="form-control">

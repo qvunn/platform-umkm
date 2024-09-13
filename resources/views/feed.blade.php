@@ -1,6 +1,6 @@
 @extends('layout.header')
 @section('content')
-    <div class="row">
+    <div class="row justify-content-center">
 
         {{-- ? Left Sidebar --}}
         <div class="col-2">
@@ -10,7 +10,7 @@
 
 
         {{-- ! MAIN FEED --}}
-        <div class="col-7">
+        <div class="col-6 mx-2">
             {{-- # SEARCH BAR --}}
             @include('include.search-bar')
             
@@ -37,12 +37,16 @@
         {{-- ! MAIN FEED END --}}
 
 
-        <div class="col-3"> {{-- ? RIGHT CONTAINER --}}
-            {{-- # SEARCH BAR --}}
-            @include('include.search-bar')
+        {{-- ? RIGHT CONTAINER --}}
+        <div class="col-3">
             {{-- # Categories --}}
             @include('include.category-card')
-        </div>{{-- ? RIGHT CONTAINER END --}}
+
+            {{-- # Recomendation --}}
+            <div class="mt-3">
+                @include('include.recomend-card')
+            </div>
+        </div>
     </div>
 
     </div>

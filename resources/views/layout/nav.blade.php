@@ -55,7 +55,7 @@
                     @endguest
                 </ul>
             </div>
-            <hr class="border-blue opacity-100 border-3 mb-0">
+            <hr class="border-blue opacity-100 border-3 mb-0 mx-5">
         </div>
     </div>
 </nav>

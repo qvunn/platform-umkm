@@ -1,6 +1,6 @@
 @extends('layout.header')
 @section('content')
-    <div class="row">
+    <div class="row justify-content-center">
 
         {{-- # LEFT CONTAINER --}}
         <div class="col-2">
@@ -10,7 +10,7 @@
 
 
         {{-- # MAIN FEED --}}
-        <div class="col-7">
+        <div class="col-6 mx-2">
             {{-- ? Flash message --}}
             @include('include.message-success')
 

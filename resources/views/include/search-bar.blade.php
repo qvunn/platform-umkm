@@ -1,10 +1,16 @@
 <div class="card">
     <div class="card-body">
-        <p class="fs-5 fw-semibold text-dark">Mau cari apa?</p>
-        <hr class="border-primary opacity-100 border-2 mb-3">
         <form action="{{ route('feed') }}" method="GET">
-            <input value="{{ request('search', '') }}" name="search" placeholder="Type here" class="text-secondary bg-white-50 form-control w-100" type="text">
-            <button class="btn btn-primary bg-blue mt-3">Find</button>
+            <div class="d-flex">
+                <div class="d-flex position-relative w-100">
+                    <span class="position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%);">
+                        <i class="fas fa-search text-secondary"></i>
+                    </span>
+                    <input value="{{ request('search', '') }}" name="search" placeholder="Mau cari apa?"
+                        class="text-secondary bg-white-50 form-control ps-5" type="text">
+                </div>
+                <button class="btn btn-primary bg-blue ms-2">Find</button>
+            </div>
         </form>
     </div>
 </div>

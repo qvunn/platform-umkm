@@ -21,21 +21,30 @@ class PostController extends Controller
         // Validate the request data
         $validated = request()->validate([
             'content' => 'required|min:5|max:1000',
-            'category' => 'required'
+            'category' => 'required',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // Ensure image validation
         ]);
 
         $validated['user_id'] = auth()->id();
+
+        // Check if an image is uploaded
+        if (request()->hasFile('image')) {
+            $validated['image'] = request()->file('image')->store('feeds', 'public'); // Store image in the 'feeds' directory within 'public'
+        }
 
         // Create the feed entry in the database
         Feed::create([
             'content' => $validated['content'],
             'category_id' => $validated['category'],
-            'user_id' => $validated['user_id']
+            'user_id' => $validated['user_id'],
+            'image' => $validated['image'] ?? null // Store image path if uploaded, else null
         ]);
 
         // Redirect back to the feed with a success message
         return redirect()->route('feed')->with('success', 'Story has been shared successfully!');
     }
+
+
 
     public function show(Feed $feed)
     {
