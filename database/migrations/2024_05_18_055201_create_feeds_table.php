@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
-            $table->string('image')->nullable();
+            $table->json('images')->nullable();
             $table->string('content');
             $table->unsignedInteger('like')->default(0);
             $table->timestamps();

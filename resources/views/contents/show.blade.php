@@ -88,14 +88,48 @@
                                     </div>
                                 </form>
                             @else
-                                @if ($feed->image && Storage::disk('public')->exists($feed->image))
-                                    <div class="border border-2 border-grey">
-                                        <img src="{{ asset('storage/' . $feed->image) }}" alt="Feed Image"
-                                            style="width: 100%; height: auto; max-height: 25vw; object-fit: contain;">
+                                @if ($feed->images && Storage::disk('public')->exists(json_decode($feed->images)[0]))
+                                    <div id="image-carousel" class="d-flex flex-column align-items-center">
+                                        <!-- Image display area -->
+                                        <div class="border border-2 border-grey mb-3"
+                                            style="width: 100%; max-width: 400px;">
+                                            <img id="current-image"
+                                                src="{{ asset('storage/' . json_decode($feed->images)[0]) }}"
+                                                alt="Feed Image"
+                                                style="width: 100%; height: auto; max-height: 25vw; object-fit: contain;">
+                                        </div>
+
+                                        <!-- Navigation buttons -->
+                                        <div class="d-flex">
+                                            <button class="btn btn-secondary me-2"
+                                                onclick="showPreviousImage()">Previous</button>
+                                            <button class="btn btn-secondary" onclick="showNextImage()">Next</button>
+                                        </div>
                                     </div>
+
+                                    <script>
+                                        const images = @json(json_decode($feed->images)); // Get the images as an array
+                                        let currentIndex = 0;
+
+                                        function showPreviousImage() {
+                                            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1; // Loop back to the last image
+                                            updateImage();
+                                        }
+
+                                        function showNextImage() {
+                                            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0; // Loop back to the first image
+                                            updateImage();
+                                        }
+
+                                        function updateImage(f) {
+                                            const imageElement = document.getElementById('current-image');
+                                            imageElement.src = `{{ asset('storage') }}/${images[currentIndex]}`; // Update image source
+                                        }
+                                    </script>
                                 @else
-                                    <p>No image available</p>
+                                    <p>No images available</p>
                                 @endif
+
                                 <p class="fs-6 fw-normal mt-2">
                                     {!! nl2br(e($feed->content)) !!}
                                 </p>

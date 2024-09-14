@@ -6,6 +6,7 @@
                 <hr class="border-blue opacity-100 border-2 mb-3 mt-2">
                 <form action="{{ route('feeds.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    {{-- # Upload content --}}
                     <div class="mb-3">
                         <textarea name="content" placeholder="Write your story here" class="form-control text-secondary" id="content"
                             rows="7">{{ old('content') }}</textarea>
@@ -22,15 +23,35 @@
                             });
                         </script>
                     </div>
-                    <div class="mb-3">
-                        <!-- File input for a new image -->
-                        <input type="file" name="image" class="form-control">
 
-                        <!-- Display validation error for image if exists -->
-                        @error('image')
+                    {{-- # Upload image --}}
+                    <div class="mb-3">
+                        <!-- File input for a new image with a limit of 4 images -->
+                        <input type="file" name="images[]" multiple="multiple" accept="image/*" class="form-control"
+                            id="images" onchange="validateFileCount(this)" max="4">
+
+                        <!-- Display validation error for images if exists -->
+                        @error('images')
                             <span class="text-danger fs-6">{{ $message }}</span>
                         @enderror
+
+                        <!-- Placeholder for custom error message -->
+                        <span id="file-error-message" class="text-danger fs-6"></span>
+
+                        <script>
+                            function validateFileCount(input) {
+                                const errorMessage = document.getElementById('file-error-message');
+                                if (input.files.length > 4) {
+                                    errorMessage.textContent = 'You can only upload up to 4 images.';
+                                    input.value = ''; // Clear the input if more than 4 images are selected
+                                } else {
+                                    errorMessage.textContent = ''; // Clear the error message if valid
+                                }
+                            }
+                        </script>
                     </div>
+
+                    {{-- # Upload category --}}
                     <div class="mb-3">
                         <select name="category" id="category" class="form-control">
                             <option class="text-secondary" value="" disabled selected hidden>
@@ -47,6 +68,8 @@
                             <span class="d-block fs-6 mt-2 text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+
+                    {{-- # Button --}}
                     <div>
                         <button type="submit" class="btn btn-primary bg-blue btn-md">Share</button>
                     </div>

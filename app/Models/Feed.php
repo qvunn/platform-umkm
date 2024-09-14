@@ -12,7 +12,7 @@ class Feed extends Model
     protected $fillable = [
         'user_id',
         'category_id',
-        'image',
+        'images',
         'content',
         'like',
     ];

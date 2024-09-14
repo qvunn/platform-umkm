@@ -18,31 +18,35 @@ class PostController extends Controller
 
     public function store()
     {
-        // Validate the request data
+        // Validate the request data, including limiting to 4 images
         $validated = request()->validate([
             'content' => 'required|min:5|max:1000',
             'category' => 'required',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // Ensure image validation
+            'images' => 'nullable|array|max:4', // Ensure that there are no more than 4 images
+            'images.*' => 'image|mimes:jpg,jpeg,png|max:2048', // Ensure each file is an image and validate the size
         ]);
 
         $validated['user_id'] = auth()->id();
 
-        // Check if an image is uploaded
-        if (request()->hasFile('image')) {
-            $validated['image'] = request()->file('image')->store('feeds', 'public'); // Store image in the 'feeds' directory within 'public'
+        // Store the image paths in an array
+        $imagePaths = [];
+        if (request()->hasFile('images')) {
+            foreach (request()->file('images') as $image) {
+                $imagePaths[] = $image->store('feeds', 'public'); // Store each image in the 'feeds' directory
+            }
         }
 
-        // Create the feed entry in the database
+        // Create the feed entry with image paths stored as JSON
         Feed::create([
             'content' => $validated['content'],
             'category_id' => $validated['category'],
             'user_id' => $validated['user_id'],
-            'image' => $validated['image'] ?? null // Store image path if uploaded, else null
+            'images' => json_encode($imagePaths), // Store images as JSON in the database
         ]);
 
-        // Redirect back to the feed with a success message
         return redirect()->route('feed')->with('success', 'Story has been shared successfully!');
     }
+
 
 
 

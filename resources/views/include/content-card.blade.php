@@ -2,8 +2,11 @@
     <div class="card-body px-3 pt-4 pb-2">
         <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
+                {{-- # Profile photo --}}
                 <img style="width:50px; height:50px; object-fit:cover;" class="me-2 avatar-sm rounded-circle"
                     src="{{ $feed->user->getImageURL() }}" alt="{{ $feed->user->name }}">
+
+                {{-- # Display username, etc --}}
                 <div class="card-title mb-0">
                     <h5 class="fw-bold mb-1">
                         <a class="nav-link text-decoration-none"
@@ -27,7 +30,7 @@
     </div>
     <div class="card-body text-dark">
         <div>
-            @if ($editing ?? false)
+            {{-- @if ($editing ?? false)
                 <form action="{{ route('feeds.update', $feed->id) }}" method="POST">
                     @csrf
                     @method('put')
@@ -68,31 +71,96 @@
                         <button type="submit" class="btn btn-primary bg-blue btn-sm mb-2">Update</button>
                     </div>
                 </form>
+            @else --}}
+
+            @if ($feed->images && ($imagesArray = json_decode($feed->images)))
+                <div class="image-gallery">
+                    {{-- # Display single image --}}
+                    @if (count($imagesArray) === 1)
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ asset('storage/' . $imagesArray[0]) }}" alt="Feed Image"
+                                class="rounded omg-fluid"
+                                style="
+                                width: 100%;
+                                max-width: 100vh;
+                                height: auto;
+                                max-height: 25vw;
+                                object-fit: contain;">
+                        </div>
+
+                        {{-- # Display two images (side-by-side) --}}
+                    @elseif (count($imagesArray) === 2)
+                        <div class="row g-1">
+                            @foreach ($imagesArray as $image)
+                                <div class="col-6"> <!-- Each image will take up 50% of the width -->
+                                    <div class="d-flex justify-content-center gap-0">
+                                        <img src="{{ asset('storage/' . $image) }}" alt="Feed Image"
+                                            class="rounded img-fluid"
+                                            style="width: 100%; max-width:100vh; height: auto; max-height: 25vw; object-fit: cover;">
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        {{-- # Display three images (one large on the left, two stacked on the right) --}}
+                    @elseif (count($imagesArray) === 3)
+                        <div class="d-flex col" style="height: 25vw">
+                            <div>
+                                <img src="{{ asset('storage/' . $imagesArray[0]) }}" alt="Feed Image"
+                                    class="rounded img-fluid"
+                                    style="width: 50vh; max-width:; height: 100%; object-fit: cover;">
+                            </div>
+                            <div>
+                                @for ($i = 1; $i < 3; $i++)
+                                    <div class="mb-1" style="max-height: 25vw">
+                                        <img src="{{ asset('storage/' . $imagesArray[$i]) }}" alt="Feed Image"
+                                            class="rounded img-fluid ms-1"
+                                            style="width: 30vh; max-width:100vh; height: 30vh; max-height: 12.4vw; object-fit: cover;">
+                                    </div>
+                                @endfor
+                            </div>
+                        </div>
+
+                        {{-- # Display four images in a 2x2 grid --}}
+                    @elseif (count($imagesArray) === 4)
+                        <div class="d-grid gap-1"
+                            style="grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); width: 100%; height: 100%; max-height: 25vw;">
+                            @foreach ($imagesArray as $image)
+                                <div class="grid-item">
+                                    <img src="{{ asset('storage/' . $image) }}" alt="Feed Image"
+                                        class="img-fluid rounded" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
             @else
-                @if ($feed->image && Storage::disk('public')->exists($feed->image))
-                    <div class="border border-2 border-grey">
-                        <img src="{{ asset('storage/' . $feed->image) }}" alt="Feed Image"
-                            style="width: 100%; height: auto; max-height: 25vw; object-fit: contain;">
-                    </div>
-                @else
-                    <p>No image available</p>
-                @endif
-                <p class="fs-6 fw-normal mt-2">
-                    {!! nl2br(e($feed->content)) !!}
-                </p>
+                <p>No images available</p>
             @endif
+
+
+            <p class="fs-6 fw-normal mt-2">
+                {!! nl2br(e($feed->content)) !!}
+            </p>
+
+
+            {{-- @endif --}}
         </div>
+
+        {{-- # Category name --}}
         <div class="pb-2">
             <span class="badge rounded-pill bg-blue ">{{ $feed->category->category_name }}</span>
         </div>
 
         <div class="d-flex justify-content-between">
             <div class="d-flex">
+                {{-- # Like count --}}
                 <a href="#" class="fw-light nav-link fs-6">
                     <span class="fas fa-heart me-1"></span>
                     1000
                     {{-- {{ $feed->likes }} --}}
                 </a>
+                {{-- # Comment count --}}
                 <a href="{{ route('feeds.show', $feed->id) }}" class="fw-light nav-link fs-6 ms-4">
                     <span class="fas fa-comment me-1"></span>
                     {{ $feed->comments()->count() }}
